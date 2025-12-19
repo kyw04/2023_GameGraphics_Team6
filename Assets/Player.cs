@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
                         transform.position = selectCollider.transform.position;
                         shadowBox.enabled = false;
                         rb.gravityScale = 0f;
-                        rb.velocity = Vector2.zero;
+                        rb.linearVelocity = Vector2.zero;
                         spriteRenderer.enabled = false;
                         cameraMove.target = selectCollider.transform;
                         if (selectCollider.GetComponent<Rigidbody2D>())
@@ -184,7 +184,7 @@ public class Player : MonoBehaviour
             transform.Translate(movement * movementSpeed * Time.deltaTime);
         }
 
-        if (rb.velocity.y != 0)
+        if (rb.linearVelocity.y != 0)
         {
             isGround = false;
             ani.SetBool("isGround", false);
@@ -219,7 +219,7 @@ public class Player : MonoBehaviour
         isGround = false;
         ani.SetTrigger("doJump");
         ani.SetBool("isGround", false);
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
     }
 
